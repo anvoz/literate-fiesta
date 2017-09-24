@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test</title>
+  </head>
+  <body>
+    <div id="log"></div>
+  </body>
+  <script>
+    function log(msg) {
+      document.getElementById('log').innerHTML += msg + '<br>';
+      console.log(msg);
+    }
+    window.onload = function() {
+      log('onload');
+      loadAll();
+    };
+    function loadAll() {
+      function load(url) {
+        var image = document.createElement('img');
+        image.onload = function() { log(url) };
+        image.src = url;
+        image.width = image.height = 0;
+        image.style.visibility = 'hidden';
+        document.documentElement.appendChild(image);
+      }
+
+      load('https://i.imgur.com/JIo8v6D.jpg');
+      load('https://i.imgur.com/ndNDLyR.jpg');
+      load('https://i.imgur.com/p8mod70.jpg');
+      load('https://i.imgur.com/Z7hOph3.jpg');
+      load('https://i.imgur.com/sEq4H1n.jpg');
+    }
+  </script>
+</html>
